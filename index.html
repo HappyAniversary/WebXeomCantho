@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Sơ Năng Lực Của Bạn</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#0070f3',
+                        'secondary': '#16a34a',
+                        'dark-bg': '#1f2937',
+                        'dark-card': '#374151',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            /* ---------------------------------------------------- */
+            /* VỊ TRÍ 1: THAY THẾ HÌNH NỀN TỔNG THỂ (BACKGROUND IMAGE) */
+            /* QUAN TRỌNG: Thay thế 'nen_ho_so.jpg' bằng TÊN TỆP CỦA BẠN. */
+            /* Đảm bảo tệp hình ảnh nằm CÙNG THƯ MỤC với tệp index.html này. */
+            /* ---------------------------------------------------- */
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            /* Giữ ảnh cố định khi cuộn */
+            background-position: center;
+
+            /* Nền sáng */
+            background-color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+        }
+
+        /* Tùy chỉnh màu nền cho chế độ tối (chỉ áp dụng cho các phần tử bên trong) */
+        .dark-mode-bg {
+            /* Giữ lại để quản lý màu chữ trong chế độ tối */
+            color: #f9fafb;
+        }
+
+        /* Đảm bảo FAB luôn nằm trên cùng */
+        #floating-button {
+            z-index: 1000;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #floating-button:hover {
+            box-shadow: 0 10px 20px rgba(0, 112, 243, 0.4);
+            transform: scale(1.05);
+        }
+
+        .text-stroke-black {
+            -webkit-text-stroke: 1px black;
+            /* Cho trình duyệt dựa trên WebKit (Chrome, Safari) */
+            text-stroke: 2px black;
+            /* Tiêu chuẩn */
+        }
+
+        /* Tùy chọn: Để chữ trong suốt (giữ lại viền) */
+        .text-fill-transparent {
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .section-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<!-- UPDATED: Loại bỏ class "dark-mode-bg" để hình nền hiển thị -->
+
+<body class="min-h-screen">
+
+    <!-- Container chính. Thêm một lớp phủ nhẹ nếu muốn làm mờ hình nền bên ngoài content. -->
+    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- 1. DIV TÓM TẮT/GIỚI THIỆU (SUMMARY) -->
+        <section id="summary"
+            class="bg-white bg-opacity-80 rounded-xl shadow-lg text-gray-800 dark:text-black-100 mb-8 p-4">
+            <h1 class="text-4xl font-extrabold text-[#EEBE8A] mb-2 **text-stroke-black**">
+                DỊCH VỤ XE ÔM CẦN THƠ
+            </h1>
+            
+            <p class="text-xl font-medium text-secondary mb-4">
+                Giá Tốt | Nhân Viên Chuyên Nghiệp | Sẵn Sàng 24/7
+            </p>
+
+            <!-- CONTROLLER NỘI DUNG COLLAPSIBLE -->
+            <div id="collapsible-summary" class="text-lg">
+                <!-- Content Container. max-h-32 (8rem) để giới hạn nội dung trên mobile. -->
+                <div id="summary-content"
+                    class="overflow-hidden transition-all duration-500 max-h-32 sm:max-h-full relative font-bold"
+                    data-collapsed="true">
+
+                    <p class="mb-2">
+                        Xe Ôm Cần Thơ Giá tốt, nhân viên chuyên nghiệp luôn luôn sẵn sàng phục vụ quý khách.
+                    </p>
+                    <p class="mb-2">
+                        Xe Ôm Cần Thơ Giá Rẻ Đặt Xe Liên Hệ:
+                    </p>
+                    <!-- PHẦN NỘI DUNG BỊ ẨN/RÚT GỌN TRÊN MOBILE -->
+                    <p class="mb-2">
+                        Chúng Tôi Nhận Tư Vấn Hỗ Trợ Đặt Gọi Xe Cho Quý Khách Mọi Lúc Mọi Nơi 24/24 Khi Quý Khách Cần
+                        Ngày Và Đêm .
+                        <span class="inline-block mt-2">🏛 Dịch Vụ Hỗ Trợ Tư Vấn Giá Cả Phù Hợp Tất Cả Tuyến Đường Quý
+                            Khách Muốn Đi. 🚚 Nhận Chở Khách Hợp Đồng Và Đi Liên Tỉnh</span>
+                    </p>
+
+                    <!-- Lớp phủ tạo hiệu ứng mờ dần (chỉ hiển thị trên mobile khi đang collapsed) -->
+                    <div id="fade-overlay"
+                        class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white dark:from-dark-card transition-opacity duration-500 sm:hidden">
+                    </div>
+                </div>
+
+                <!-- Nút "Xem thêm" / "Thu gọn" (Chỉ hiển thị trên mobile) -->
+                <div class="sm:hidden text-left mt-2">
+                    <button id="toggle-button" onclick="toggleSummary()"
+                        class="text-primary font-bold hover:text-blue-700 transition duration-150">
+                        Xem thêm
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DIV HÌNH ẢẢNH CÁ NHÂN (PERSONAL PHOTO) --><!-- ĐÃ CẬP NHẬT: Layering - Ảnh 1/2 nằm trên Div nền 100% -->
+        <section id="photo-area" class="bg-white bg-opacity-80 rounded-xl shadow-lg p-0 overflow-hidden mb-8">
+            <div class="w-full flex flex-col relative">
+
+                <!-- START: Image and Layering Area -->
+                <div class="h-[400px] sm:h-[500px] w-full relative p-6 sm:p-10">
+
+                    <!-- Layer 2: Main Layering Container -->
+                    <div class="relative w-full h-full bg-white-200 shadow-xl  overflow-hidden z-20">
+
+                        <!-- Div 1: YOUR VISION (100% Width, Layer Dưới - Z-index thấp hơn ảnh) -->
+                        <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                            <img src="imagene.png" alt="Hình ảnh cá nhân"
+                                class="w-full h-full object-cover "
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x500/0070f3/ffffff?text=Hinh+Anh+Dich+Vu';">
+                        </div>
+
+                        <!-- Div 2: Hình ảnh Cá nhân (50% Width, Layer Trên - Z-index cao hơn) -->
+                        <div class="absolute top-0 left-0 w-1/2 h-full relative z-20">
+                            <!-- ---------------------------------------------------- --><!-- VỊ TRÍ 2: THAY THẾ HÌNH ẢNH CHÍNH CỦA DIV NÀY --><!-- Thay thế URL trong thuộc tính 'src' bên dưới --><!-- ---------------------------------------------------- -->
+                            <img src="shipper-image.png" alt="Hình ảnh cá nhân" class="w-full h-full object-cover "
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x500/0070f3/ffffff?text=Hinh+Anh+Dich+Vu';">
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- END: Image and Layering Area -->
+
+                <!-- 2. Phần banner Tên và Chức danh - CÓ BO GÓC DƯỚI (rounded-b-xl) -->
+                <!-- Sử dụng z-index và negative margin để banner nổi bật hơn -->
+                <div
+                    class="bg-green-800 text-white p-4 text-center rounded-b-xl relative z-30 mx-auto w-11/12 shadow-xl -mt-6 sm:-mt-10">
+                    <h3 class="text-2xl sm:text-3xl font-bold mb-1">Hà Hữu Phước - Mrphước Shjper Grap Cần Thơ</h3>
+                    <p class="text-lg sm:text-xl font-medium"></p>
+                </div>
+
+                <!-- 3. Phần Thư Ngỏ - Nền trong suốt với padding -->
+                <div class="bg-white bg-opacity-20 text-gray-800 dark:text-gray-100 px-6 py-6 sm:p-8 mt-4 sm:mt-8">
+                    <h2
+                        class="text-2xl sm:text-4xl font-extrabold text-green-800 mb-4 border-b-2 border-green-500 pb-2">
+                        Thư Ngỏ từ Xế Cần Thơ - Người bạn đồng hành trên mọi nẻo đường!
+                    </h2>
+                    <div class="space-y-4 bg-opacity-20 text-base sm:text-lg text-gray-800">
+                        <p>
+                            Lời đầu tiên, đội ngũ Xế Cần Thơ xin gửi tới Quý khách hàng lời chào trân trọng, lời chúc
+                            sức khỏe, may mắn và vạn sự như ý.
+                        </p>
+                        <p>
+                            Được thành lập và hoạt động tại Cần Thơ với tiêu chí lấy<span
+                                class="font-extrabold text-green-800"> TÂM </span>làm tiêu chí phục vụ, lấy TÍN làm cầu
+                            nối,
+                            Xế Cần Thơ không ngừng nỗ lực mang đến những chuyến đi <span
+                                class="font-extrabold text-green-800">An toàn, Nhanh chóng và Tiết kiệm</span> nhất cho
+                            Quý khách hàng.
+                            Hơn một thập kỷ qua, chúng tôi đã và đang phục vụ hàng nghìn lượt khách hàng,
+                            trở thành người bạn đồng hành quen thuộc trên khắp các quận, huyện của xứ sở Tây Đô.
+                        </p>
+                        <p>
+                            Chúng tôi đã, đang và sẽ luôn nỗ lực xây dựng uy tín, niềm tin với khách hàng bằng những
+                            chuyến đi chất lượng. Sự đồng hành của Quý khách hàng là sự động viên to lớn
+                            trên bước đường phát triển tôi.
+                        </p>
+                        <p>
+                            Tôi xin gửi lời tri ân sâu sắc đến Quý khách hàng.
+                            Cảm ơn sự tin tưởng và đồng hành nồng nhiệt.
+                            Tôi cam kết sẽ không ngừng nâng cao chất lượng dịch vụ để phục vụ Quý khách một cách tốt
+                            nhất và hiệu quả nhất.
+                        </p>
+                        <div class="text-right mt-6">
+                            <p class="font-semibold">Trân trọng cảm ơn</p>
+                            <p class="font-bold text-primary">Hà Hữu Phước</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. FOOTER VỚI CÁC ELEMENT LIÊN HỆ --><!-- ĐÃ CẬP NHẬT: Thay thế section-card bằng bg-opacity-80 và p-4 để làm nền trong suốt -->
+        <footer id="contact-footer"
+            class="bg-white bg-opacity-80 rounded-xl shadow-lg p-4 text-center dark:text-gray-300">
+            <h2 class="text-3xl font-bold text-green-800 mb-4">Liên Hệ Với Tôi</h2>
+            <div class="flex flex-wrap justify-center gap-6 sm:gap-12">
+
+                <!-- Email --><a href="mailto:email.cuaban@example.com"
+                    class="flex items-center space-x-2 hover:text-primary transition duration-300 text-black">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                    <span class="font-semibold">email.cuaban@example.com</span>
+                </a>
+
+                <!-- LinkedIn (Có thể thay bằng Zalo/Facebook/Website khác) --><a
+                    href="https://www.facebook.com/phuoc.hahuu.3" target="_blank"
+                    class="flex items-center space-x-2 hover:text-primary transition duration-300 text-black">
+                    <i data-lucide="users" class="w-6 h-6"></i>
+                    <span class="font-semibold">Facebook</span>
+                </a>
+
+                <!-- GitHub (Có thể thay bằng địa chỉ) --><a
+                    class="flex items-center space-x-2 text-black transition duration-300">
+                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    <span class="font-semibold">Địa chỉ Cần Thơ</span>
+                </a>
+
+                <a id="phone-link" href="tel:+84901234567"
+                    class="flex items-center space-x-2 text-black transition duration-300">
+                    <i data-lucide="phone" class="w-6 h-6"></i>
+                    <span id="display-phone-number" class="font-semibold cursor-pointer">Loading...</span>
+                </a>
+                <!-- </div>
+            <p class="mt-8 text-sm text-gray-500 dark:text-gray-400">
+                &copy; 2024 Dịch Vụ Xe Ôm Cần Thơ.
+            </p> -->
+        </footer>
+
+    </div>
+
+    <!-- 4. FLOATING BUTTON (FAB) CỐ ĐỊNH --><button id="floating-button"
+        class="fixed bottom-6 right-6 p-4 sm:p-5 bg-secondary text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-opacity-50"
+        aria-label="Gọi điện thoại" onclick="callMe()">
+        <!-- Icon điện thoại --><i data-lucide="phone" class="w-7 h-7 sm:w-8 sm:h-8"></i>
+    </button>
+
+    <!-- JavaScript cho chức năng gọi điện và khởi tạo icon -->
+    <script>
+        // Khởi tạo icons của Lucide
+        lucide.createIcons();
+
+        // SỐ ĐIỆN THOẠI CẦN GỌI (VUI LÒNG THAY ĐỔI)
+        const phoneNumber = "+84901234567";
+        const COLLAPSED_HEIGHT = '8rem'; // max-h-32
+
+        function callMe() {
+            // Kiểm tra xem thiết bị có phải là di động không (một cách đơn giản)
+            const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Trên thiết bị di động, dùng tel: để mở ứng dụng gọi điện
+                window.location.href = `tel:${phoneNumber}`;
+            } else {
+                // Trên máy tính bàn, hiển thị thông báo thay vì gọi trực tiếp
+                showMessage(`Để gọi, vui lòng sử dụng thiết bị di động hoặc quay số: ${phoneNumber}`, 'info');
+            }
+        }
+
+        function toggleSummary() {
+            const content = document.getElementById('summary-content');
+            const button = document.getElementById('toggle-button');
+            const overlay = document.getElementById('fade-overlay');
+
+            if (content.getAttribute('data-collapsed') === 'true') {
+                // Mở rộng: tính toán chiều cao thực tế và gán vào style
+                content.style.maxHeight = content.scrollHeight + 'px';
+                overlay.classList.add('opacity-0');
+                button.textContent = 'Thu gọn';
+                content.setAttribute('data-collapsed', 'false');
+            } else {
+                // Thu gọn: chuyển về chiều cao ban đầu (COLLAPSED_HEIGHT)
+                content.style.maxHeight = COLLAPSED_HEIGHT;
+                overlay.classList.remove('opacity-0');
+                button.textContent = 'Xem thêm';
+                content.setAttribute('data-collapsed', 'true');
+            }
+        }
+
+        // Đặt chiều cao ban đầu cho trạng thái collapse trên mobile
+        function setInitialCollapseState() {
+            const content = document.getElementById('summary-content');
+            const overlay = document.getElementById('fade-overlay');
+            const button = document.getElementById('toggle-button');
+
+            if (!content || !overlay || !button) return;
+
+            // Chỉ áp dụng logic collapse/expand trên màn hình nhỏ
+            if (window.innerWidth < 640) {
+                // Khi tải trang: đảm bảo nó ở trạng thái collapse ban đầu
+                content.style.maxHeight = COLLAPSED_HEIGHT;
+                content.setAttribute('data-collapsed', 'true');
+                button.textContent = 'Xem thêm';
+                overlay.classList.remove('opacity-0');
+                content.classList.remove('sm:max-h-full'); // Đảm bảo class desktop không can thiệp
+            } else {
+                // Trên desktop: loại bỏ giới hạn chiều cao để hiển thị full
+                content.style.maxHeight = 'none';
+                content.setAttribute('data-collapsed', 'false');
+                content.classList.add('sm:max-h-full');
+            }
+        }
+
+        // Xử lý khi resize màn hình (chuyển đổi giữa mobile/desktop)
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(setInitialCollapseState, 150);
+        });
+
+        document.addEventListener('DOMContentLoaded', setInitialCollapseState);
+
+        // Hàm hiển thị thông báo tùy chỉnh (thay thế cho alert/confirm)
+        function showMessage(message, type) {
+            let msgBox = document.getElementById('custom-message-box');
+            if (!msgBox) {
+                // Tạo message box nếu chưa tồn tại
+                msgBox = document.createElement('div');
+                msgBox.id = 'custom-message-box';
+                msgBox.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-2xl text-center transition-all duration-300 z-[1001] max-w-sm w-11/12 border-t-4 border-primary';
+                msgBox.innerHTML = `
+                    <p class="text-lg font-semibold mb-4 text-gray-800">${message}</p>
+                    <button onclick="closeMessage()" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Đóng</button>
+                `;
+                document.body.appendChild(msgBox);
+            } else {
+                // Cập nhật nội dung và hiển thị lại
+                msgBox.querySelector('p').textContent = message;
+                msgBox.style.display = 'block';
+            }
+        }
+
+        function closeMessage() {
+            const msgBox = document.getElementById('custom-message-box');
+            if (msgBox) {
+                msgBox.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

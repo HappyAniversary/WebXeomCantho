@@ -4,7 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phước Shipper Cần Thơ</title>
+    <title>Phước Shipper Cần Thơ - Dịch Vụ Xe Ôm & Giao Hàng 24/7 | Hà Hữu Phước</title>
+    <meta name="description" content="Phước Shipper Cần Thơ cung cấp dịch vụ xe ôm, giao hàng, mua hộ, thu hộ 24/7 tại Cần Thơ. Liên hệ: 0772867678. Nhân viên chuyên nghiệp, giá cả hợp lý.">
+    <meta name="keywords" content="xe ôm Cần Thơ, shipper Cần Thơ, giao hàng Cần Thơ, Phước Shipper, đặt xe Cần Thơ, xe Cần Thơ">
+    <link rel="canonical" href="/" id="canonical-link" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <meta name="author" content="Hà Hữu Phước - Phước Shipper Cần Thơ" />
+    <meta name="theme-color" content="#0070f3" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta name="geo.placename" content="Cần Thơ" />
+    <meta name="geo.region" content="VN-CT" />
+    <meta name="geo.position" content="10.0452;105.7469" />
+    <meta name="ICBM" content="10.0452,105.7469" />
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Phước Shipper Cần Thơ - Dịch Vụ Xe Ôm & Giao Hàng 24/7">
+    <meta property="og:description" content="Dịch vụ xe ôm & giao hàng tại Cần Thơ. Liên hệ: 0772867678. An toàn, nhanh chóng, giá tốt.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:image" content="/shipper-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Phước Shipper Cần Thơ - Dịch Vụ Xe Ôm & Giao Hàng 24/7">
+    <meta name="twitter:description" content="Dịch vụ xe ôm & giao hàng tại Cần Thơ. Liên hệ: 0772867678.">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="google-site-verification" content="MH7Kidksmdx79rknQtVPJuGq-gIjb1EPE1KfO0Lmdyg" />
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -29,6 +57,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Set canonical to current page URL and inject JSON-LD for LocalBusiness
+        (function(){
+            try {
+                var canonical = document.getElementById('canonical-link');
+                if (canonical) canonical.href = window.location.origin + window.location.pathname;
+
+                // Also update Open Graph meta tags to reflect the current URL and absolute image URL
+                try {
+                    var ogUrl = document.querySelector('meta[property="og:url"]');
+                    if (ogUrl) ogUrl.setAttribute('content', window.location.origin + window.location.pathname);
+
+                    var ogImage = document.querySelector('meta[property="og:image"]');
+                    if (ogImage) ogImage.setAttribute('content', window.location.origin + '/shipper-image.png');
+
+                    var twitterImage = document.querySelector('meta[name="twitter:image"]');
+                    if (twitterImage) twitterImage.setAttribute('content', window.location.origin + '/shipper-image.png');
+                } catch(e) {
+                    /* non-fatal */
+                }
+
+                var ld = {
+                    "@context": "https://schema.org",
+                    "@type": "LocalBusiness",
+                    "name": "Phước Shipper Cần Thơ",
+                    "description": "Dịch vụ xe ôm, giao hàng, mua hộ, thu hộ 24/7 tại Cần Thơ. Liên hệ: 0772867678",
+                    "url": window.location.origin + window.location.pathname,
+                    "telephone": "+84772867678",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Cần Thơ",
+                        "addressCountry": "VN"
+                    },
+                    "image": [window.location.origin + '/shipper-image.png'],
+                    "openingHours": "Mo-Su 00:00-23:59",
+                    "sameAs": ["https://www.facebook.com/phuoc.hahuu.3"]
+                };
+                var s = document.createElement('script');
+                s.type = 'application/ld+json';
+                s.text = JSON.stringify(ld);
+                document.head.appendChild(s);
+            } catch (e) {
+                console.warn('SEO helper script error', e);
+            }
+        })();
+    </script>
     <style>
         body {
             /* ---------------------------------------------------- */
@@ -166,14 +240,14 @@
                         <!-- Div 1: YOUR VISION (100% Width, Layer Dưới - Z-index thấp hơn ảnh) -->
                         <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
                             <img src="imagene.png" alt="Hình ảnh cá nhân"
-                                class="w-full h-full object-cover "
+                                class="w-full h-full object-cover " loading="lazy"
                                 onerror="this.onerror=null;this.src='https://placehold.co/600x500/0070f3/ffffff?text=Hinh+Anh+Dich+Vu';">
                         </div>
 
                         <!-- Div 2: Hình ảnh Cá nhân (50% Width, Layer Trên - Z-index cao hơn) -->
                         <div class="absolute top-0 left-0 w-1/2 h-full relative z-20">
                             <!-- ---------------------------------------------------- --><!-- VỊ TRÍ 2: THAY THẾ HÌNH ẢNH CHÍNH CỦA DIV NÀY --><!-- Thay thế URL trong thuộc tính 'src' bên dưới --><!-- ---------------------------------------------------- -->
-                            <img src="shipper-image.png" alt="Hình ảnh cá nhân" class="w-full h-full object-cover "
+                            <img src="shipper-image.png" alt="Hình ảnh cá nhân" class="w-full h-full object-cover " loading="lazy"
                                 onerror="this.onerror=null;this.src='https://placehold.co/600x500/0070f3/ffffff?text=Hinh+Anh+Dich+Vu';">
 
                         </div>
